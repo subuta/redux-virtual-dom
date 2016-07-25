@@ -22,31 +22,34 @@ Basic idea came from [react-redux](https://github.com/reactjs/react-redux/blob/m
 when you import `redux-virtual-dom`, it gives you `injectCreator`
 you need to pass `store` to `injectCreator`, and it returns {inject, connect} for later use. 
 
-- `export const {inject, connect} = injectCreator(store);
+- `export const {inject, connect} = injectCreator(store)`
 
-### inject
+### `inject`
 this function injects `{props, dispatch, state}` to your own render function.
 like [deku](https://github.com/anthonyshort/deku)'s way
 
-- `inject(render, [mapStateToProps], [mapDispatchToProps])`
+- `inject(render, [mapStateToProps], [mapDispatchToProps]) -> render([props])`
+
+call returned `render` with an object will passed as a `props` and
+`redux-virtual-dom` will inject `dispatch/state` also.
+
+#### example
+```javascript
+// your own implementation
+const render = ({props, dispatch, state}) => {
+  return h('div', {}, [props.counter]);
+}
+
+const wrappedRender = inject(render);
+
+// will return virtual-dom tree.
+return wrappedRender({counter: 1});
+```
 
 ### connect
 is syntax sugar for `inject`. it behaves like [react-redux](https://github.com/reactjs/react-redux/blob/master/README.md)'s `connect` function.
 
 - `connect([mapStateToProps], [mapDispatchToProps])(render)`
-
-### render(not `redux-virtual-dom` API)
-is your own render function. you can pass object as a `props` and
-`redux-virtual-dom` will inject `dispatch/state` also.
-
-- `render([props])`
-
-#### example
-```javascript
-const render = ({props, dispatch, state}) => {
-  return h('div', {}, [props.counter]);
-}
-```
 
 ## Example
 You need to pass your `redux store` to `redux-virtual-dom` like below.
@@ -166,6 +169,9 @@ open http://localhost:3000
 ```
 
 ---
+
+#### TODO
+- [ ] - add tests.
 
 ## LICENSE
 [MIT](https://opensource.org/licenses/MIT)
