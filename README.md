@@ -1,4 +1,4 @@
-## redux-virtual-dom
+# redux-virtual-dom
 [react-redux](https://github.com/reactjs/react-redux) for your vdom library :)
 
 - Make your vdom-based development flow easy.
@@ -9,16 +9,49 @@
 
 [README - 日本語版](README-ja.md)
 
-### Installation
+## Installation
 ```
 npm install redux-virtual-dom --save
 ```
 
-### Example
+## Documentation
 
+Basic idea came from [react-redux](https://github.com/reactjs/react-redux/blob/master/README.md)  thanks!
+
+### `injectCreator`
+when you import `redux-virtual-dom`, it gives you `injectCreator`
+you need to pass `store` to `injectCreator`, and it returns {inject, connect} for later use. 
+
+- `export const {inject, connect} = injectCreator(store);
+
+### inject
+this function injects `{props, dispatch, state}` to your own render function.
+like [deku](https://github.com/anthonyshort/deku)'s way
+
+- `inject(render, [mapStateToProps], [mapDispatchToProps])`
+
+### connect
+is syntax sugar for `inject`. it behaves like [react-redux](https://github.com/reactjs/react-redux/blob/master/README.md)'s `connect` function.
+
+- `connect([mapStateToProps], [mapDispatchToProps])(render)`
+
+### render(not `redux-virtual-dom` API)
+is your own render function. you can pass object as a `props` and
+`redux-virtual-dom` will inject `dispatch/state` also.
+
+- `render([props])`
+
+#### example
+```javascript
+const render = ({props, dispatch, state}) => {
+  return h('div', {}, [props.counter]);
+}
+```
+
+## Example
 You need to pass your `redux store` to `redux-virtual-dom` like below.
 
-```
+```javascript
 // 1. get redux store from somewhere
 import store from './store.js';
 // 2. import `redux-virtual-dom`
@@ -30,7 +63,7 @@ export const {inject, connect} = injectCreator(store);
 
 then call `connect/inject` API from everywhere to access redux's `dispatch/state`
 
-```
+```javascript
 import h from 'snabbdom/h';
 
 // 4. import your `inject/connect` from somewhere(maybe in your store.js)
@@ -103,15 +136,15 @@ export default connect(
 // );
 ```
 
-### Development
-#### 1. Clone this repo
+## Development
+### 1. Clone this repo
 
 ```
 git clone https://github.com/subuta/redux-virtual-dom
 cd ./redux-virtual-dom
 ```
 
-#### 2. Install dependencies
+### 2. Install dependencies
 
 - Caddy (for Development server)
 - jspm@beta (for package management/build)
@@ -123,7 +156,7 @@ npm i
 jspm i
 ```
 
-#### 3. Run example app
+### 3. Run example app
 
 ```
 caddy
@@ -134,5 +167,5 @@ open http://localhost:3000
 
 ---
 
-### LICENSE
+## LICENSE
 [MIT](https://opensource.org/licenses/MIT)
