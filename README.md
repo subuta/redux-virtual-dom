@@ -5,7 +5,7 @@
   - with [virtual-dom](https://github.com/Matt-Esch/virtual-dom)
   - or [snabbdom](https://github.com/paldepind/snabbdom)
 - Convenient utility(only ~100 line) for Redux. 
-- Memoize your `render` function for better performance.
+- !Memoize your `render` function for better performance!
 
 [README - 日本語版](README-ja.md)
 
@@ -16,11 +16,11 @@ npm install redux-virtual-dom --save
 
 ## Documentation
 
-Basic idea came from [react-redux](https://github.com/reactjs/react-redux/blob/master/README.md)  thanks!
+Basic idea came from [react-redux](https://github.com/reactjs/react-redux/blob/master/README.md) thanks!
 
 ### `injectCreator`
-when you import `redux-virtual-dom`, it gives you `injectCreator`
-you need to pass `store` to `injectCreator`, and it returns {inject, connect} for later use. 
+when you import `redux-virtual-dom`, it gives you `injectCreator`,
+you need to pass `store` to `injectCreator`, and it returns `{inject, connect}` for later use. 
 
 - `export const {inject, connect} = injectCreator(store)`
 
@@ -47,7 +47,7 @@ return wrappedRender({counter: 1});
 ```
 
 ### connect
-is syntax sugar for `inject`. it behaves like [react-redux](https://github.com/reactjs/react-redux/blob/master/README.md)'s `connect` function.
+is another syntax for `inject`. it behaves like [react-redux](https://github.com/reactjs/react-redux/blob/master/README.md)'s `connect` function.
 
 - `connect([mapStateToProps], [mapDispatchToProps])(render)`
 
@@ -91,7 +91,7 @@ const mapStateToProps = (state) => {
   }
 };
 
-//// ** Or you can use reselect if you want **
+//// ** Or you can use [reselect](https://github.com/reactjs/reselect) if you want **
 // const mapStateToProps = createSelector(
 //   getCount,
 //   (count) => {
@@ -149,7 +149,7 @@ cd ./redux-virtual-dom
 
 ### 2. Install dependencies
 
-- Caddy (for Development server)
+- Caddy (Web server for Development)
 - jspm@beta (for package management/build)
 
 ```
@@ -171,6 +171,7 @@ open http://localhost:3000
 ---
 
 #### TODO
+- [ ] - npmリポジトリに登録.
 - [ ] - add tests.
 
 ## LICENSE
