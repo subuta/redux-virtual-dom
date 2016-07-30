@@ -20,6 +20,7 @@ npm install redux-virtual-dom --save
 ### `injectCreator`
 `redux-virtual-dom`をインポートすると、`injectCreator`が得られます。
 この`injectCreator`に`store`を渡す事で、後述の`{inject, connect}`を得ることができます。
+これはreact-reduxの`Provider`コンポーネントのようなものです。
 
 - `export const {inject, connect} = injectCreator(store)`
 
@@ -168,11 +169,6 @@ caddy
 # open link.
 open http://localhost:3000
 ```
-
----
-
-#### TODO
-- [ ] - add tests.
 
 ## LICENSE
 [MIT](https://opensource.org/licenses/MIT)

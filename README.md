@@ -21,6 +21,7 @@ Basic idea came from [react-redux](https://github.com/reactjs/react-redux/blob/m
 ### `injectCreator`
 when you import `redux-virtual-dom`, it gives you `injectCreator`,
 you need to pass `store` to `injectCreator`, and it returns `{inject, connect}` for later use. 
+this acts like react-redux's `Provider` component.  
 
 - `export const {inject, connect} = injectCreator(store)`
 
@@ -167,12 +168,6 @@ caddy
 # open link.
 open http://localhost:3000
 ```
-
----
-
-#### TODO
-- [ ] - npmリポジトリに登録.
-- [ ] - add tests.
 
 ## LICENSE
 [MIT](https://opensource.org/licenses/MIT)

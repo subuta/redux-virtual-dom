@@ -10,11 +10,7 @@ module.exports = function (wallaby) {
       {pattern: 'node_modules/chai-as-promised/lib/chai-as-promised.js', instrument: false},
 
       // source files (`load: false` as the files will be loaded by system.js loader)
-      {pattern: 'build.js', load: false},
-      {pattern: 'example/**/*.js', load: false},
-      {pattern: 'example/**/*.css', load: false},
-      {pattern: 'index.html', load: false},
-      {pattern: 'lib/**/*.js', load: false},
+      {pattern: 'lib/**/*.js', load: false}
     ],
     tests: [
       // test files (`load: false` as we will load tests manually)
@@ -23,7 +19,8 @@ module.exports = function (wallaby) {
 
     compilers: {
       '**/*.js': wallaby.compilers.babel({
-        presets: ['es2015']
+        presets: ['es2015'],
+        plugins: ['transform-object-rest-spread']
       })
     },
 
