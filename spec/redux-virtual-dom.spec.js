@@ -169,7 +169,7 @@ describe('injectorCreator', function(){
     wrappedRender(props);
   });
 
-  it('should memoize render function by props', function(){
+  it('should not memoize render function by props if mapStateToProps not passed', function(){
     store = {
       dispatch: sinon.spy((action) => action),
       getState: sinon.spy(() => state)
@@ -193,11 +193,11 @@ describe('injectorCreator', function(){
     // if props not changed, then return memoized result without calling render.
     assert(wrappedRender({count: 0}) === '<h1>count = 0</h1>');
     assert(wrappedRender({count: 0}) === '<h1>count = 0</h1>');
-    assert(render.calledOnce === true);
+    assert(render.callCount=== 3);
 
     // if props changed, then call render function as usual.
     assert(wrappedRender({count: 1}) === '<h1>count = 1</h1>');
-    assert(render.calledTwice === true);
+    assert(render.callCount=== 4);
   });
 
   it('should memoize render function by props with mapStateToProps', function(){
@@ -218,7 +218,7 @@ describe('injectorCreator', function(){
       return `<h1>count = ${props.count}</h1>`;
     });
 
-    const mapStateToProps = (state) => {
+    const mapStateToProps = (state, props) => {
       return {
         count: state.Counter.count
       }
@@ -231,7 +231,6 @@ describe('injectorCreator', function(){
 
     // render should be called once.
     assert(wrappedRender({}) === '<h1>count = 0</h1>');
-    console.log(render.callCount);
     assert(render.calledOnce === true);
 
     // if props not changed, then return memoized result without calling render.

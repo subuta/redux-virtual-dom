@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const render = ({props}) => {
-  console.log('render called!');
+  console.log('[counter] rendered');
   return h(`span`, {
     on: {
       'click': function (ev) {

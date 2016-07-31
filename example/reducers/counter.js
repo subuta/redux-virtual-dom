@@ -1,7 +1,6 @@
 import {combineReducers} from 'redux';
 
 const count = (state = 0, action) => {
-  console.log('action.type = ', action.type);
   switch (action.type) {
     case 'increment':
       return state + 1;
