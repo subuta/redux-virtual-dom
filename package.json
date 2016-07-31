@@ -47,7 +47,15 @@
     "chai-as-promised": "^5.3.0",
     "electron-prebuilt": "^1.2.2",
     "jspm": "^0.17.0-beta.22",
-    "sinon": "^1.17.4"
+    "karma": "^1.1.2",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jspm": "^2.2.0",
+    "karma-mocha": "^1.1.1",
+    "karma-sinon": "^1.0.5",
+    "mocha": "^2.5.3",
+    "sinon": "^1.17.4",
+    "sinon-chai": "^2.8.0"
   },
   "jspmPackage": true,
   "files": [
@@ -61,6 +69,7 @@
   "main": "dist/redux-virtual-dom.js",
   "format": "amd",
   "scripts": {
+    "test": "./node_modules/karma/bin/karma start",
     "bundle": "jspm bundle example/app.js -wid",
     "unbundle": "jspm unbundle example/app.js",
     "serve": "caddy & npm run bundle",

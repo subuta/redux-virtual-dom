@@ -45,12 +45,12 @@ describe('injectorCreator', function(){
       // check dispatch
       // when you call model.dispatch that should call store.dispatch
       assert.typeOf(model.dispatch, 'function');
-      assert(store.dispatch.called === false);
+      assert.equal(store.dispatch.called, false);
       model.dispatch();
-      assert(store.dispatch.called === true);
+      assert.equal(store.dispatch.called, true);
 
       // should call store.getState
-      assert(store.getState.called === true);
+      assert.equal(store.getState.called, true);
       // should pass store.state as model.state
       assert.deepEqual(model.state, state);
     };
@@ -69,12 +69,12 @@ describe('injectorCreator', function(){
       // check dispatch
       // when you call model.dispatch that should call store.dispatch
       assert.typeOf(model.dispatch, 'function');
-      assert(store.dispatch.called === false);
+      assert.equal(store.dispatch.called, false);
       model.dispatch();
-      assert(store.dispatch.called === true);
+      assert.equal(store.dispatch.called, true);
 
       // should call store.getState
-      assert(store.getState.called === true);
+      assert.equal(store.getState.called, true);
       // should pass store.state as model.state
       assert.deepEqual(model.state, state);
     };
@@ -151,18 +151,18 @@ describe('injectorCreator', function(){
     const render = (model) => {
       // should pass props as model.props
       assert(model.props.dummyAction);
-      assert(dummyAction.called === false);
-      assert(store.dispatch.called === false);
+      assert.equal(dummyAction.called, false);
+      assert.equal(store.dispatch.called, false);
 
       // call props action
       model.props.dummyAction('dummy value');
 
       // props action call should be bound to original one.
-      assert(dummyAction.called === true);
+      assert.equal(dummyAction.called, true);
       // dispatch should be called.
-      assert(store.dispatch.called === true);
+      assert.equal(store.dispatch.called, true);
       // should pass-through it's arguments.
-      assert(dummyAction.calledWith('dummy value') === true);
+      assert.equal(dummyAction.calledWith('dummy value'), true);
     };
 
     const wrappedRender = inject(render, null, mapDispatchToProps);
@@ -184,20 +184,20 @@ describe('injectorCreator', function(){
     const wrappedRender = inject(render);
 
     // render should not be called on first time
-    assert(render.called === false);
+    assert.equal(render.called, false);
 
     // render should be called once.
-    assert(wrappedRender({count: 0}) === '<h1>count = 0</h1>');
-    assert(render.calledOnce === true);
+    assert.equal(wrappedRender({count: 0}), '<h1>count = 0</h1>');
+    assert.equal(render.calledOnce, true);
 
     // if props not changed, then return memoized result without calling render.
-    assert(wrappedRender({count: 0}) === '<h1>count = 0</h1>');
-    assert(wrappedRender({count: 0}) === '<h1>count = 0</h1>');
-    assert(render.callCount=== 3);
+    assert.equal(wrappedRender({count: 0}), '<h1>count = 0</h1>');
+    assert.equal(wrappedRender({count: 0}), '<h1>count = 0</h1>');
+    assert.equal(render.callCount, 3);
 
     // if props changed, then call render function as usual.
-    assert(wrappedRender({count: 1}) === '<h1>count = 1</h1>');
-    assert(render.callCount=== 4);
+    assert.equal(wrappedRender({count: 1}), '<h1>count = 1</h1>');
+    assert.equal(render.callCount, 4);
   });
 
   it('should memoize render function by props with mapStateToProps', function(){
@@ -227,30 +227,30 @@ describe('injectorCreator', function(){
     const wrappedRender = inject(render, mapStateToProps);
 
     // render should not be called on first time
-    assert(render.called === false);
+    assert.equal(render.called, false);
 
     // render should be called once.
-    assert(wrappedRender({}) === '<h1>count = 0</h1>');
-    assert(render.calledOnce === true);
+    assert.equal(wrappedRender({}), '<h1>count = 0</h1>');
+    assert.equal(render.calledOnce, true);
 
     // if props not changed, then return memoized result without calling render.
-    assert(wrappedRender({}) === '<h1>count = 0</h1>');
-    assert(wrappedRender({}) === '<h1>count = 0</h1>');
-    assert(render.calledOnce === true);
+    assert.equal(wrappedRender({}), '<h1>count = 0</h1>');
+    assert.equal(wrappedRender({}), '<h1>count = 0</h1>');
+    assert.equal(render.calledOnce, true);
 
     // change state directly(simulate reducer call.)
     state.Counter.count = 1;
 
     // if props changed, then call render function as usual.
-    assert(wrappedRender({}) === '<h1>count = 1</h1>');
-    assert(render.calledTwice === true);
+    assert.equal(wrappedRender({}), '<h1>count = 1</h1>');
+    assert.equal(render.calledTwice, true);
   });
 });
 
 describe('hashCode', function(){
   it('should return not same hashCode from different string', function(){
-    assert(hashCode('test') === hashCode('test'));
-    assert(hashCode('test') !== hashCode('another'));
+    assert.equal(hashCode('test'), hashCode('test'));
+    assert.notEqual(hashCode('test'), hashCode('another'));
   });
 
   it('correctly generates hashCode from Function', function(){
@@ -276,6 +276,6 @@ describe('hashCode', function(){
   });
 
   it('should return 0 with blank string', function(){
-    assert(hashCode('') === 0);
+    assert.equal(hashCode(''), 0);
   });
 });
