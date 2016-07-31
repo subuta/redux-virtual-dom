@@ -1,7 +1,7 @@
 {
   "jspm": {
-    "name": "app",
-    "main": "app.js",
+    "name": "redux-virtual-dom",
+    "main": "lib/redux-virtual-dom.js",
     "dependencies": {
       "deep-equal": "npm:deep-equal@^1.0.1"
     },
@@ -37,7 +37,7 @@
   },
   "name": "redux-virtual-dom",
   "description": "connect redux to any virtual-dom library like react-redux ✨",
-  "version": "0.1.1",
+  "version": "0.9.0",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.10.4",
