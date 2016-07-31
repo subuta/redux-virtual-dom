@@ -1,4 +1,4 @@
-# redux-virtual-dom
+# redux-virtual-dom [![Build Status](https://travis-ci.org/subuta/redux-virtual-dom.svg?branch=master)](https://travis-ci.org/subuta/redux-virtual-dom) [![Coverage Status](https://coveralls.io/repos/github/subuta/redux-virtual-dom/badge.svg?branch=master)](https://coveralls.io/github/subuta/redux-virtual-dom?branch=master)
 [react-redux](https://github.com/reactjs/react-redux) for your vdom library :)
 
 - Make your vdom-based development flow easy.
