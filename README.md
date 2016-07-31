@@ -5,7 +5,7 @@
   - with [virtual-dom](https://github.com/Matt-Esch/virtual-dom)
   - or [snabbdom](https://github.com/paldepind/snabbdom)
 - Convenient utility(only ~100 line) for Redux. 
-- !Memoize your `render` function for better performance!
+- Automatically memoize your `render` function for better performance!
 
 [README - 日本語版](README-ja.md)
 

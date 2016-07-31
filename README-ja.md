@@ -5,7 +5,7 @@
   - [virtual-dom](https://github.com/Matt-Esch/virtual-dom)と使ったり
   - [snabbdom](https://github.com/paldepind/snabbdom)する想定です。 
 - Reduxを`virtual-dom`と組み合わせるのに便利！
-- !渡された`render`はより良いパフォーマンスのためにメモ化されます。! 
+- 渡された`render`はより良いパフォーマンスのためにメモ化されます! 
 
 [README - English](README.md)
 
