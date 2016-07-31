@@ -1,7 +1,6 @@
 {
   "jspm": {
     "name": "redux-virtual-dom",
-    "main": "lib/redux-virtual-dom.js",
     "dependencies": {
       "babel": "babel-core@^6.11.4",
       "deep-equal": "^1.0.1"
