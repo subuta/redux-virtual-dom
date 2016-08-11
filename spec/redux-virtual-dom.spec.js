@@ -1,4 +1,4 @@
-import injectorCreator, {hashCode} from '/lib/redux-virtual-dom.js';
+import injectorCreator, {hashCode} from 'lib/redux-virtual-dom.js';
 
 describe('injectorCreator', function(){
 
