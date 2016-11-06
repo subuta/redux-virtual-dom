@@ -1,9 +1,9 @@
 import h from 'snabbdom/h';
-import {inject} from 'example/store.js'
+import {inject} from '../../store.js'
 
 import {
   increment
-} from 'example/actions/counter.js';
+} from '../../actions/counter.js';
 
 export default inject(({dispatch}) => {
   return h(`button`, {
