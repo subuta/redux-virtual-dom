@@ -67,7 +67,7 @@
   },
   "name": "redux-virtual-dom",
   "description": "connect redux to any virtual-dom library like react-redux ✨",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.10.4",
