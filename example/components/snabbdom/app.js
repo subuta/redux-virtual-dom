@@ -7,9 +7,9 @@ import h from 'snabbdom/h';
 
 import store, {inject} from 'example/store.js'
 
-import Counter from './counter.js';
-import incrementer from './incrementer.js';
-import decrementer from './decrementer.js';
+import Counter from './Counter.js';
+import Incrementer from './Incrementer.js';
+import Decrementer from './Decrementer.js';
 
 const patch = snabbdom.init([ // Init patch function with choosen modules
   classModule, // makes it easy to toggle classes
@@ -32,24 +32,29 @@ const render = inject(({dispatch, state}) => {
       height: 100 + 'px'
     }
   }, [
-    incrementer(),
+    Incrementer(),
     Counter(),
-    decrementer()
+    Decrementer()
   ]);
 });
 
-let container = document.querySelector('#app-container');
+export default () => {
+  // Patch into empty DOM element – this modifies the DOM as a side effect
+  let tree = document.querySelector('#app-container'); // We need an initial tree
 
-// Patch into empty DOM element – this modifies the DOM as a side effect
-let tree = render(); // We need an initial tree
-patch(container, tree);
+  // - with diff then patch(efficient way / with vdom)
+  const update = () => {
+    var newTree = render();
+    patch(tree, newTree);
+    tree = newTree;
+  };
 
-// - with diff then patch(efficient way / with vdom)
-const update = () => {
-  var newTree = render();
-  patch(tree, newTree);
-  tree = newTree;
-};
+  if (document.readyState === 'complete' || document.readyState !== 'loading') {
+    update();
+  } else {
+    document.addEventListener('DOMContentLoaded', update);
+  }
 
-// call update on store changes.
-store.subscribe(update);
+  // call update on store changes.
+  store.subscribe(update);
+}
