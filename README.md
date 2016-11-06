@@ -1,9 +1,10 @@
 # redux-virtual-dom [![Build Status](https://travis-ci.org/subuta/redux-virtual-dom.svg?branch=master)](https://travis-ci.org/subuta/redux-virtual-dom) [![Coverage Status](https://coveralls.io/repos/github/subuta/redux-virtual-dom/badge.svg?branch=master)](https://coveralls.io/github/subuta/redux-virtual-dom?branch=master)
 [react-redux](https://github.com/reactjs/react-redux) for your vdom library :)
 
-- Make your vdom-based development flow easy.
-  - with [virtual-dom](https://github.com/Matt-Esch/virtual-dom)
-  - or [snabbdom](https://github.com/paldepind/snabbdom)
+- Make your vdom-based development flow easy. with these libraries.
+  - ✅[vidom](https://github.com/dfilatov/vidom)
+  - ✅[snabbdom](https://github.com/paldepind/snabbdom)
+  - Should also work with other vdom libraries(https://github.com/Matt-Esch/virtual-dom)
 - Convenient utility(only ~100 line) for Redux. 
 - Automatically memoize your `render` function for better performance!
 
@@ -140,6 +141,11 @@ export default connect(
 // );
 ```
 
+see `example/components` for full example.
+- `/vidom` -> example of [vidom](https://github.com/dfilatov/vidom) with [JSX](https://github.com/dfilatov/babel-plugin-vidom-jsx) plugin.
+- `/snabbdom` -> example of [snabbdom](https://github.com/paldepind/snabbdom)
+- other files are common redux files(`actions/reducers/store`)
+
 ## Development
 ### 1. Clone this repo
 
@@ -165,8 +171,13 @@ jspm i
 ```
 caddy
 
-# open link.
-open http://localhost:3000
+# open link(snabbdom example).
+open http://localhost:3000/
+
+or
+
+# open link(vidom example).
+open http://localhost:3000/vidom
 ```
 
 ## LICENSE

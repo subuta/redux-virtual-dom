@@ -26,6 +26,18 @@ SystemJS.config({
     }
   },
   transpiler: "plugin-babel",
+  babelOptions: {
+    "es2015": true,
+    "stage2": true,
+    "plugins": [
+      [
+        "babel-plugin-vidom-jsx",
+        {
+          "autoRequire": false
+        }
+      ]
+    ]
+  },
   packages: {
     "app": {
       "main": "app.js",
@@ -47,6 +59,7 @@ SystemJS.config({
   map: {
     "assert": "github:jspm/nodelibs-assert@0.2.0-alpha",
     "babel": "npm:babel-core@6.11.4",
+    "babel-plugin-vidom-jsx": "npm:babel-plugin-vidom-jsx@0.3.1",
     "buffer": "github:jspm/nodelibs-buffer@0.2.0-alpha",
     "child_process": "github:jspm/nodelibs-child_process@0.2.0-alpha",
     "deep-equal": "npm:deep-equal@1.0.1",
@@ -58,7 +71,8 @@ SystemJS.config({
     "process": "github:jspm/nodelibs-process@0.2.0-alpha",
     "stream": "github:jspm/nodelibs-stream@0.2.0-alpha",
     "url": "github:jspm/nodelibs-url@0.2.0-alpha",
-    "util": "github:jspm/nodelibs-util@0.2.0-alpha"
+    "util": "github:jspm/nodelibs-util@0.2.0-alpha",
+    "vidom": "npm:vidom@0.5.2"
   },
   packages: {
     "github:jspm/nodelibs-buffer@0.2.0-alpha": {
@@ -309,6 +323,18 @@ SystemJS.config({
       "map": {
         "querystring": "npm:querystring@0.2.0",
         "punycode": "npm:punycode@1.3.2"
+      }
+    },
+    "npm:babel-plugin-vidom-jsx@0.3.1": {
+      "map": {
+        "babel-plugin-syntax-jsx": "npm:babel-plugin-syntax-jsx@6.18.0",
+        "babel-runtime": "npm:babel-runtime@6.18.0"
+      }
+    },
+    "npm:babel-runtime@6.18.0": {
+      "map": {
+        "regenerator-runtime": "npm:regenerator-runtime@0.9.6",
+        "core-js": "npm:core-js@2.4.1"
       }
     }
   }
