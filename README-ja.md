@@ -2,8 +2,9 @@
 [react-redux](https://github.com/reactjs/react-redux) for your vdom library :)
 
 - `virtual-dom`系のライブラリを利用した開発フローを簡単にします。
-  - [virtual-dom](https://github.com/Matt-Esch/virtual-dom)と使ったり
-  - [snabbdom](https://github.com/paldepind/snabbdom)する想定です。 
+  - ✅[vidom](https://github.com/dfilatov/vidom)
+  - ✅[snabbdom](https://github.com/paldepind/snabbdom)
+  - 他の`virtual-dom`系ライブラリでも、おそらく使えます(https://github.com/Matt-Esch/virtual-dom) 
 - Reduxを`virtual-dom`と組み合わせるのに便利！
 - 渡された`render`はより良いパフォーマンスのためにメモ化されます! 
 
@@ -15,6 +16,7 @@ npm install redux-virtual-dom --save
 ```
 
 ## Documentation
+
 基本的なコンセプトは　[react-redux](https://github.com/reactjs/react-redux/blob/master/README.md) を参考にしてます。thanks!
 
 ### `injectCreator`
@@ -141,6 +143,11 @@ export default connect(
 // );
 ```
 
+詳細なサンプルは `example/components` 配下を見てみてください。
+- `/vidom` -> [vidom](https://github.com/dfilatov/vidom) と [JSX](https://github.com/dfilatov/babel-plugin-vidom-jsx) プラグインを使ったサンプルです。
+- `/snabbdom` -> [snabbdom](https://github.com/paldepind/snabbdom) を使ったサンプルです。
+- 他(`actions/reducers/store`)は共通のredux向けのファイルです。
+
 ## Development
 ### 1. リポジトリをクローン
 
@@ -166,8 +173,13 @@ jspm i
 ```
 caddy
 
-# open link.
-open http://localhost:3000
+# open link(snabbdom example).
+open http://localhost:3000/
+
+or
+
+# open link(vidom example).
+open http://localhost:3000/vidom
 ```
 
 ## LICENSE

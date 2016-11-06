@@ -142,7 +142,7 @@ export default connect(
 ```
 
 see `example/components` for full example.
-- `/vidom` -> example of [vidom](https://github.com/dfilatov/vidom) with [jsx](https://github.com/dfilatov/babel-plugin-vidom-jsx) plugin.
+- `/vidom` -> example of [vidom](https://github.com/dfilatov/vidom) with [JSX](https://github.com/dfilatov/babel-plugin-vidom-jsx) plugin.
 - `/snabbdom` -> example of [snabbdom](https://github.com/paldepind/snabbdom)
 - other files are common redux files(`actions/reducers/store`)
 
@@ -171,8 +171,13 @@ jspm i
 ```
 caddy
 
-# open link.
-open http://localhost:3000
+# open link(snabbdom example).
+open http://localhost:3000/
+
+or
+
+# open link(vidom example).
+open http://localhost:3000/vidom
 ```
 
 ## LICENSE
