@@ -6,10 +6,28 @@ import eventlistenersModule from 'snabbdom/modules/eventlisteners';
 import h from 'snabbdom/h';
 
 import store, {inject} from 'example/store.js'
+import { getCount } from 'example/reducers/counter.js';
 
 import Counter from './Counter.js';
 import Incrementer from './Incrementer.js';
 import Decrementer from './Decrementer.js';
+
+// redux style mapStateToProps
+const mapStateToProps = (state) => {
+  return {
+    count: getCount(state)
+  }
+};
+
+//// ** Or you can use reselect if you want **
+// const mapStateToProps = createSelector(
+//   getCount,
+//   (count) => {
+//     return {
+//       count
+//     }
+//   }
+// );
 
 const patch = snabbdom.init([ // Init patch function with choosen modules
   classModule, // makes it easy to toggle classes
@@ -18,9 +36,8 @@ const patch = snabbdom.init([ // Init patch function with choosen modules
   eventlistenersModule // attaches event listeners
 ]);
 
-const render = inject(({dispatch, state}) => {
-  const count = state.counter.count;
-  return h(`div#app-container.test${count}`, {
+const render = inject(({dispatch, state, props}) => {
+  return h(`div#app-container.test${props.count}`, {
     style: {
       display: 'flex',
       justifyContent: 'center',
@@ -33,10 +50,10 @@ const render = inject(({dispatch, state}) => {
     }
   }, [
     Incrementer(),
-    Counter(),
+    Counter({}, props.count),
     Decrementer()
   ]);
-});
+}, mapStateToProps);
 
 export default () => {
   // Patch into empty DOM element – this modifies the DOM as a side effect

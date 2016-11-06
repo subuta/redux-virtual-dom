@@ -1,9 +1,9 @@
 import h from 'snabbdom/h';
 
-import {connect, inject} from 'example/store.js'
-import {createSelector} from 'reselect';
+import { connect, inject } from 'example/store.js'
+import { createSelector } from 'reselect';
 import { bindActionCreators } from 'redux'
-import {getCount} from 'example/reducers/counter.js';
+import { getCount } from 'example/reducers/counter.js';
 
 const dummyActions = {
   dummyAction: () => {
@@ -13,21 +13,7 @@ const dummyActions = {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    count: getCount(state)
-  }
-};
-
-//// ** Or you can use reselect if you want **
-// const mapStateToProps = createSelector(
-//   getCount,
-//   (count) => {
-//     return {
-//       count
-//     }
-//   }
-// );
+const mapStateToProps = null;
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -35,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-const render = ({props}) => {
+const render = ({ props, children }) => {
   console.log('[snabbdom-counter] rendered');
   return h(`span`, {
     on: {
@@ -43,7 +29,7 @@ const render = ({props}) => {
         return props.dummyAction();
       }
     }
-  }, [props.count]);
+  }, children);
 };
 
 // react-redux way

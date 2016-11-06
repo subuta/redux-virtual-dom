@@ -14,21 +14,7 @@ const dummyActions = {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    count: getCount(state)
-  }
-};
-
-//// ** Or you can use reselect if you want **
-// const mapStateToProps = createSelector(
-//   getCount,
-//   (count) => {
-//     return {
-//       count
-//     }
-//   }
-// );
+const mapStateToProps = null;
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -36,11 +22,11 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-const render = ({ props }) => {
+const render = ({ props, children }) => {
   console.log('[vidom-counter] rendered');
   return (
     <span onClick={(ev) => props.dummyAction()}>
-      {props.count}
+      {children}
     </span>
   );
 };

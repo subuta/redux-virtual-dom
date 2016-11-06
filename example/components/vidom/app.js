@@ -2,13 +2,30 @@ import * as vidom from 'vidom';
 import { mount, unmount } from 'vidom';
 
 import store, {inject} from 'example/store.js'
+import { getCount } from 'example/reducers/counter.js';
 
 import Counter from './Counter.js';
 import Incrementer from './Incrementer.js';
 import Decrementer from './Decrementer.js';
 
-const render = inject(({dispatch, state}) => {
-  const count = state.counter.count;
+// redux style mapStateToProps
+const mapStateToProps = (state) => {
+  return {
+    count: getCount(state)
+  }
+};
+
+//// ** Or you can use reselect if you want **
+// const mapStateToProps = createSelector(
+//   getCount,
+//   (count) => {
+//     return {
+//       count
+//     }
+//   }
+// );
+
+const render = inject(({dispatch, state, props}) => {
   const ContainerStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -22,14 +39,14 @@ const render = inject(({dispatch, state}) => {
 
   return (
     <div id="app-container"
-         className={`test${count}`}
+         className={`test${props.count}`}
          style={ContainerStyle}>
       <Incrementer/>
-      <Counter/>
+      <Counter>{props.count}</Counter>
       <Decrementer/>
     </div>
   );
-});
+}, mapStateToProps);
 
 export default () => {
   var container = document.querySelector('#app-container');
