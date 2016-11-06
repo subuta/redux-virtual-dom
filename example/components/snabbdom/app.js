@@ -51,12 +51,5 @@ const update = () => {
   tree = newTree;
 };
 
-const unSubscribe = store.subscribe(update);
-
-export const _reload = () => {
-  update();
-};
-
-export const _unload = () => {
-  unSubscribe();
-};
+// call update on store changes.
+store.subscribe(update);
