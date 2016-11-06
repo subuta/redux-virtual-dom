@@ -8,6 +8,8 @@
 - Reduxを`virtual-dom`と組み合わせるのに便利！
 - 渡された`render`はより良いパフォーマンスのためにメモ化されます! 
 
+Demo: http://subuta.github.io/redux-virtual-dom/
+
 [README - English](README.md)
 
 ## Installation

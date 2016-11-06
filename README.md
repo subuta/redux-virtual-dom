@@ -8,6 +8,8 @@
 - Convenient utility(only ~100 line) for Redux. 
 - Automatically memoize your `render` function for better performance!
 
+Demo: http://subuta.github.io/redux-virtual-dom/
+
 [README - 日本語版](README-ja.md)
 
 ## Installation
