@@ -5,11 +5,11 @@ import styleModule from 'snabbdom/modules/style';
 import eventlistenersModule from 'snabbdom/modules/eventlisteners';
 import h from 'snabbdom/h';
 
-import store, {inject} from '../store.js'
+import store, {inject} from 'example/store.js'
 
-import Counter from './components/counter.js';
-import incrementer from './components/incrementer.js';
-import decrementer from './components/decrementer.js';
+import Counter from './counter.js';
+import incrementer from './incrementer.js';
+import decrementer from './decrementer.js';
 
 const patch = snabbdom.init([ // Init patch function with choosen modules
   classModule, // makes it easy to toggle classes
@@ -18,7 +18,6 @@ const patch = snabbdom.init([ // Init patch function with choosen modules
   eventlistenersModule // attaches event listeners
 ]);
 
-// childrenのみを書き換えるパターン
 const render = inject(({dispatch, state}) => {
   const count = state.counter.count;
   return h(`div#app-container.test${count}`, {
