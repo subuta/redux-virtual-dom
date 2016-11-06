@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const render = ({props}) => {
-  console.log('[counter] rendered');
+  console.log('[snabbdom-counter] rendered');
   return h(`span`, {
     on: {
       'click': function (ev) {
