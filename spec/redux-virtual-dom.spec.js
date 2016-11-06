@@ -4,6 +4,7 @@ describe('injectorCreator', function(){
 
   var state = {};
   var props = {};
+  var children = {};
   var store = {};
 
   beforeEach(function(){
@@ -17,6 +18,10 @@ describe('injectorCreator', function(){
     props = {
       count: 0
     };
+
+    children = [
+      'hoge'
+    ];
 
     store = {
       dispatch: sinon.spy(),
@@ -35,12 +40,15 @@ describe('injectorCreator', function(){
     assert.typeOf(connect, 'function');
   });
 
-  it('should inject injects props/dispatch/state to render', function(){
+  it('should inject injects props/dispatch/state/children to render', function(){
     const {inject} = injectorCreator(store);
 
     const render = (model) => {
       // should pass props as model.props
       assert.deepEqual(model.props, props);
+
+      // should pass children as model.children
+      assert.deepEqual(model.children, children);
 
       // check dispatch
       // when you call model.dispatch that should call store.dispatch
@@ -56,15 +64,18 @@ describe('injectorCreator', function(){
     };
 
     const wrappedRender = inject(render);
-    wrappedRender(props);
+    wrappedRender(props, children);
   });
 
-  it('should connect injects props/dispatch/state to render also', function(){
+  it('should connect injects props/dispatch/state/children to render also', function(){
     const {connect} = injectorCreator(store);
 
     const render = (model) => {
       // should pass props as model.props
       assert.deepEqual(model.props, props);
+
+      // should pass children as model.children
+      assert.deepEqual(model.children, children);
 
       // check dispatch
       // when you call model.dispatch that should call store.dispatch
@@ -80,7 +91,7 @@ describe('injectorCreator', function(){
     };
 
     const wrappedRender = connect()(render);
-    wrappedRender(props);
+    wrappedRender(props, children);
   });
 
   it('should inject accepts mapStateToProps as a second argument', function(){
