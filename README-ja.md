@@ -1,7 +1,6 @@
 # redux-virtual-dom [![Build Status](https://travis-ci.org/subuta/redux-virtual-dom.svg?branch=master)](https://travis-ci.org/subuta/redux-virtual-dom) [![Coverage Status](https://coveralls.io/repos/github/subuta/redux-virtual-dom/badge.svg?branch=master)](https://coveralls.io/github/subuta/redux-virtual-dom?branch=master)
 View framework agnostic [react-redux](https://github.com/reactjs/react-redux) :)
 
-- Make your [Stateless component](https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.4ure2ot2k) based development flow easy. work with these libraries.
 - [Stateless component](https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.4ure2ot2k)を活用した開発フローを実現するライブラリです。以下のライブラリで動作確認済となります。
   - ✅[React](https://github.com/facebook/react)
   - ✅[vidom](https://github.com/dfilatov/vidom)
