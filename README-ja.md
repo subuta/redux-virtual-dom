@@ -1,7 +1,9 @@
 # redux-virtual-dom [![Build Status](https://travis-ci.org/subuta/redux-virtual-dom.svg?branch=master)](https://travis-ci.org/subuta/redux-virtual-dom) [![Coverage Status](https://coveralls.io/repos/github/subuta/redux-virtual-dom/badge.svg?branch=master)](https://coveralls.io/github/subuta/redux-virtual-dom?branch=master)
-[react-redux](https://github.com/reactjs/react-redux) for your vdom library :)
+View framework agnostic [react-redux](https://github.com/reactjs/react-redux) :)
 
-- `virtual-dom`系のライブラリを利用した開発フローを簡単にします。
+- Make your [Stateless component](https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.4ure2ot2k) based development flow easy. work with these libraries.
+- [Stateless component](https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.4ure2ot2k)を活用した開発フローを実現するライブラリです。以下のライブラリで動作確認済となります。
+  - ✅[React](https://github.com/facebook/react)
   - ✅[vidom](https://github.com/dfilatov/vidom)
   - ✅[snabbdom](https://github.com/paldepind/snabbdom)
   - 他の`virtual-dom`系ライブラリでも、おそらく使えます(https://github.com/Matt-Esch/virtual-dom) 
@@ -41,7 +43,7 @@ npm install redux-virtual-dom --save
 ```javascript
 // 自分でつくるやつ
 const render = ({props, dispatch, state}) => {
-  return h('div', {}, [props.counter]);
+  return <span>{props.counter}</span>;
 }
 
 const wrappedRender = inject(render);
@@ -115,13 +117,11 @@ const mapDispatchToProps = (dispatch) => {
 
 const render = ({props}) => {
   console.log('render called!');
-  return h(`span`, {
-    on: {
-      'click': function (ev) {
-        return props.dummyAction();
-      }
-    }
-  }, [props.count]);
+  return (
+    <span onClick={(ev) => props.dummyAction()}>
+      {props.count}
+    </span>
+  );
 };
 
 // ** react-reduxっぽい書き方が好きならこちら **
@@ -132,13 +132,11 @@ export default connect(
 
 //// dekuを参考にした記法はこちら
 // export default inject(({props}) => {
-//     return h(`span`, {
-//       on: {
-//         'click': function (ev) {
-//           return props.dummyAction();
-//         }
-//       }
-//     }, [props.count]);
+//    return (
+//      <span onClick={(ev) => props.dummyAction()}>
+//        {props.children}
+//      </span>
+//    );
 //   },
 //   mapStateToProps,
 //   mapDispatchToProps
@@ -146,7 +144,8 @@ export default connect(
 ```
 
 詳細なサンプルは `example/components` 配下を見てみてください。
-- `/vidom` -> [vidom](https://github.com/dfilatov/vidom) と [JSX](https://github.com/dfilatov/babel-plugin-vidom-jsx) プラグインを使ったサンプルです。
+- `/react` -> [React](https://github.com/facebook/react) と [JSX](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx) プラグインを使ったサンプルです。
+- `/vidom` -> [vidom](https://github.com/dfilatov/vidom) を使ったサンプルです。
 - `/snabbdom` -> [snabbdom](https://github.com/paldepind/snabbdom) を使ったサンプルです。
 - 他(`actions/reducers/store`)は共通のredux向けのファイルです。
 
@@ -175,8 +174,13 @@ jspm i
 ```
 caddy
 
-# open link(snabbdom example).
+# open link(react example).
 open http://localhost:3000/
+
+or
+
+# open link(snabbdom example).
+open http://localhost:3000/snabbdom
 
 or
 

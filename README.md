@@ -1,7 +1,8 @@
 # redux-virtual-dom [![Build Status](https://travis-ci.org/subuta/redux-virtual-dom.svg?branch=master)](https://travis-ci.org/subuta/redux-virtual-dom) [![Coverage Status](https://coveralls.io/repos/github/subuta/redux-virtual-dom/badge.svg?branch=master)](https://coveralls.io/github/subuta/redux-virtual-dom?branch=master)
-[react-redux](https://github.com/reactjs/react-redux) for your vdom library :)
+View framework agnostic [react-redux](https://github.com/reactjs/react-redux) :)
 
-- Make your vdom-based development flow easy. with these libraries.
+- Make your [Stateless component](https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.4ure2ot2k) based development flow easy. work with these libraries.
+  - ✅[React](https://github.com/facebook/react)
   - ✅[vidom](https://github.com/dfilatov/vidom)
   - ✅[snabbdom](https://github.com/paldepind/snabbdom)
   - Should also work with other vdom libraries(https://github.com/Matt-Esch/virtual-dom)
@@ -41,7 +42,7 @@ call returned `render` with an object will passed as a `props` and
 ```javascript
 // your own implementation
 const render = ({props, dispatch, state}) => {
-  return h('div', {}, [props.counter]);
+  return <span>{props.counter}</span>;
 }
 
 const wrappedRender = inject(render);
@@ -113,13 +114,11 @@ const mapDispatchToProps = (dispatch) => {
 
 const render = ({props}) => {
   console.log('render called!');
-  return h(`span`, {
-    on: {
-      'click': function (ev) {
-        return props.dummyAction();
-      }
-    }
-  }, [props.count]);
+  return (
+    <span onClick={(ev) => props.dummyAction()}>
+      {props.count}
+    </span>
+  );
 };
 
 // ** react-redux like API for you. **
@@ -130,13 +129,11 @@ export default connect(
 
 //// ** you can do same thing as deku flavored way **
 // export default inject(({props}) => {
-//     return h(`span`, {
-//       on: {
-//         'click': function (ev) {
-//           return props.dummyAction();
-//         }
-//       }
-//     }, [props.count]);
+//    return (
+//      <span onClick={(ev) => props.dummyAction()}>
+//        {props.children}
+//      </span>
+//    );
 //   },
 //   mapStateToProps,
 //   mapDispatchToProps
@@ -144,7 +141,8 @@ export default connect(
 ```
 
 see `example/components` for full example.
-- `/vidom` -> example of [vidom](https://github.com/dfilatov/vidom) with [JSX](https://github.com/dfilatov/babel-plugin-vidom-jsx) plugin.
+- `/react` -> example of [React](https://github.com/facebook/react) with [JSX](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx) plugin.
+- `/vidom` -> example of [vidom](https://github.com/dfilatov/vidom) plugin.
 - `/snabbdom` -> example of [snabbdom](https://github.com/paldepind/snabbdom)
 - other files are common redux files(`actions/reducers/store`)
 
@@ -173,8 +171,13 @@ jspm i
 ```
 caddy
 
-# open link(snabbdom example).
+# open link(react example).
 open http://localhost:3000/
+
+or
+
+# open link(snabbdom example).
+open http://localhost:3000/snabbdom
 
 or
 

@@ -1,4 +1,5 @@
-import { mount, node, unmount } from 'vidom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 import store, {inject} from 'example/store.js'
 import { getCount } from 'example/reducers/counter.js';
@@ -36,20 +37,24 @@ const render = inject(({dispatch, state, props}) => {
     height: 100 + 'px'
   };
 
-  return node('div').attrs({id: 'app-container', className: `test${props.count}`, style: ContainerStyle}).children([
-    Incrementer(),
-    Counter({}, props.count),
-    Decrementer()
-  ]);
+  return (
+    <div id="app-container"
+         className={`test${props.count}`}
+         style={ContainerStyle}>
+      <Incrementer/>
+      <Counter>{props.count}</Counter>
+      <Decrementer/>
+    </div>
+  );
 }, mapStateToProps);
 
 export default () => {
-  var container = document.querySelector('#app-container');
   const update = () => {
-    container = document.querySelector('#app-container')
-    if (!container) {return}
-    mount(container, render())
-  }
+    ReactDOM.render(
+      render(),
+      document.querySelector('#app-container')
+    )
+  };
 
   if (document.readyState === 'complete' || document.readyState !== 'loading') {
     update();
@@ -57,6 +62,5 @@ export default () => {
     document.addEventListener('DOMContentLoaded', update);
   }
 
-  // call update on store changes.
   store.subscribe(update);
 }

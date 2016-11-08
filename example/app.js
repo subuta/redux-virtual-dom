@@ -1,5 +1,7 @@
 // Simple hash based conditional loading.
-if (location.hash === '' || location.hash === '#/snabbdom') {
+if (location.hash === '' || location.hash === '#/react') {
+  require('./components/react/app.js').default()
+} else if (location.hash === '#/snabbdom') {
   require('./components/snabbdom/app.js').default()
 } else if (location.hash === '#/vidom') {
   require('./components/vidom/app.js').default()
