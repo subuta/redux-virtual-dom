@@ -1,5 +1,4 @@
 import * as vidom from 'vidom';
-import { mount, unmount } from 'vidom';
 
 import { connect, inject } from 'example/store.js'
 import { createSelector } from 'reselect';
