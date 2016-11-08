@@ -1,7 +1,8 @@
 # redux-virtual-dom [![Build Status](https://travis-ci.org/subuta/redux-virtual-dom.svg?branch=master)](https://travis-ci.org/subuta/redux-virtual-dom) [![Coverage Status](https://coveralls.io/repos/github/subuta/redux-virtual-dom/badge.svg?branch=master)](https://coveralls.io/github/subuta/redux-virtual-dom?branch=master)
 View framework agnostic [react-redux](https://github.com/reactjs/react-redux) :)
 
-- Make your vdom-based development flow easy. with these libraries.
+- Make your stateless component based development flow easy. work with these libraries.
+  - ✅[React](https://github.com/facebook/react)
   - ✅[vidom](https://github.com/dfilatov/vidom)
   - ✅[snabbdom](https://github.com/paldepind/snabbdom)
   - Should also work with other vdom libraries(https://github.com/Matt-Esch/virtual-dom)

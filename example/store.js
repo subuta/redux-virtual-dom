@@ -1,5 +1,5 @@
 import {createStore, compose} from 'redux';
-import injectCreator from 'lib/redux-virtual-dom.js';
+import injectCreator from 'redux-virtual-dom';
 
 import reducer from './reducers/index.js';
 
