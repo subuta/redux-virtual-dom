@@ -1,4 +1,4 @@
-import { node } from 'vidom';
+import React from 'react'
 
 import { connect, inject } from 'example/store.js'
 import { createSelector } from 'reselect';
@@ -21,9 +21,13 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-const render = ({ props, children }) => {
-  console.log('[vidom-counter] rendered');
-  return node('span').attrs({onClick: (ev) => props.dummyAction()}).children(children)
+const render = ({ props }) => {
+  console.log('[react-counter] rendered');
+  return (
+    <span onClick={(ev) => props.dummyAction()}>
+      {props.children}
+    </span>
+  );
 };
 
 // react-redux way
