@@ -36,15 +36,13 @@ export default connect(
   mapDispatchToProps
 )(render);
 
-//// ** deku flavored way **
+//// ** you can do same thing as deku flavored way **
 // export default inject(({props}) => {
-//     return h(`span`, {
-//       on: {
-//         'click': function (ev) {
-//           return props.dummyAction();
-//         }
-//       }
-//     }, [props.count]);
+//    return (
+//      <span onClick={(ev) => props.dummyAction()}>
+//        {props.children}
+//      </span>
+//    );
 //   },
 //   mapStateToProps,
 //   mapDispatchToProps

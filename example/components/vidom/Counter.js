@@ -34,13 +34,7 @@ export default connect(
 
 //// ** deku flavored way **
 // export default inject(({props}) => {
-//     return h(`span`, {
-//       on: {
-//         'click': function (ev) {
-//           return props.dummyAction();
-//         }
-//       }
-//     }, [props.count]);
+//     return node('span').attrs({onClick: (ev) => props.dummyAction()}).children(props.count);
 //   },
 //   mapStateToProps,
 //   mapDispatchToProps
